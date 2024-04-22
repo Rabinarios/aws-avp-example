@@ -20,8 +20,8 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-west-1
+          aws-region: eu-west-1
 
       - name: Deploy to AWS CloudFormation
         run: |
-          aws cloudformation deploy --stack-name aws-avp-example --template-file iac/avp.yml --parameter-overrides CedarJson="$(cat cedar.json)" --capabilities CAPABILITY_IAM
+          aws cloudformation deploy --stack-name aws-avp-example --template-file iac/avp.yml --parameter-overrides CedarJson="$(cat iac/schema.json)" --capabilities CAPABILITY_IAM
