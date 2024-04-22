@@ -7,11 +7,6 @@ Parameters:
   CedarJson:
     Type: String
     Description: The Cedar JSON to be used in the PolicyStore resource
-  # ClientIds:
-  #   Type: List<String>
-  # UserPoolArn:
-  #   Type: String
-  #   Default: !ImportValue MyUserPoolArn
   CognitoStackName:
     Type: String
     Description: The name of the Cognito stack
