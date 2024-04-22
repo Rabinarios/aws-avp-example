@@ -35,19 +35,19 @@ Resources:
                 resource
             );
 
-  DenyPolicy:
-    Type: AWS::VerifiedPermissions::Policy
-    Properties:
-      PolicyStoreId: !Ref PolicyStore
-      Definition:
-        Static:
-          Description: "Forbid user X from viewing any documents"
-          Statement: |
-            forbid(
-              principal == DocumentManagementPlatform::User::"62c5c4f4-70e1-7032-9217-36bd72ad7692",
-              action in [DocumentManagementPlatform::Action::"View"],
-              resource
-            );
+  # DenyPolicy:
+  #   Type: AWS::VerifiedPermissions::Policy
+  #   Properties:
+  #     PolicyStoreId: !Ref PolicyStore
+  #     Definition:
+  #       Static:
+  #         Description: "Forbid user X from viewing any documents"
+  #         Statement: |
+  #           forbid(
+  #             principal == DocumentManagementPlatform::User::"62c5c4f4-70e1-7032-9217-36bd72ad7692",
+  #             action in [DocumentManagementPlatform::Action::"View"],
+  #             resource
+  #           );
 
   IdentitySource:
     Type: AWS::VerifiedPermissions::IdentitySource
