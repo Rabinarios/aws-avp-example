@@ -60,8 +60,8 @@ Resources:
       PolicyStoreId: !Ref PolicyStore
       Configuration:
         CognitoUserPoolConfiguration:
-          UserPoolArn: Fn::ImportValue: 
-          'Fn::Sub': '${CognitoStackName}-user-pool-arn'
+          UserPoolArn:
+            - Fn::ImportValue: !Sub "${CognitoStackName}-user-pool-arn"
           # ClientIds: !Ref ClientIds
       PrincipalEntityType: DocumentManagementPlatform::User
 
