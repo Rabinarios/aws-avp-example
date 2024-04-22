@@ -1,0 +1,52 @@
+AWSTemplateFormatVersion: "2010-09-09"
+
+Description: >
+  IaC for AVP
+
+Parameters:
+  CedarJson:
+    Type: String
+    Description: The Cedar JSON to be used in the PolicyStore resource
+
+Resources:
+  PolicyStore:
+    Type: AWS::VerifiedPermissions::PolicyStore
+    Properties:
+      Description: "Policy store for the documents scenario created via Cloudformation"
+      ValidationSettings:
+        Mode: STRICT
+      Schema:
+        CedarJson: !Ref CedarJson
+
+  AllowPolicy:
+    Type: AWS::VerifiedPermissions::Policy
+    Properties:
+      PolicyStoreId: !Ref PolicyStore
+      Definition:
+        Static:
+          Description: "Allow all users to view all documents"
+          Statement: |
+            permit (
+                principal,
+                action in [DocumentManagementPlatform::Action::"View"],
+                resource
+            );
+
+  DenyPolicy:
+    Type: AWS::VerifiedPermissions::Policy
+    Properties:
+      PolicyStoreId: !Ref PolicyStore
+      Definition:
+        Static:
+          Description: "Forbid user X from viewing any documents"
+          Statement: |
+            forbid(
+              principal == DocumentManagementPlatform::User::"xyz",
+              action in [DocumentManagementPlatform::Action::"View"],
+              resource
+            );
+
+Outputs:
+  PolicyStoreId:
+    Description: "Identifier of the Amazon Verified Permissions policy store."
+    Value: !Ref PolicyStore
