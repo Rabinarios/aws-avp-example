@@ -44,7 +44,7 @@ Resources:
         forbid (
           principal in ?principal,
           action in [DocumentManagementPlatform::Action::"View"],
-          resource
+          resource in ?resource
         );
 
   # DenyPolicyFromTemplate1:
@@ -71,6 +71,9 @@ Resources:
           Principal:
             EntityId: "62c5c4f4-70e1-7032-9217-36bd72ad7692"
             EntityType: "DocumentManagementPlatform::User"
+          Resource:
+            EntityId: "private-document1"
+            EntityType: "DocumentManagementPlatform::Document"
 
   IdentitySource:
     Type: AWS::VerifiedPermissions::IdentitySource
