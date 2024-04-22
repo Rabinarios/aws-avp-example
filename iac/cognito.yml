@@ -36,3 +36,8 @@ Outputs:
   UserPoolClientId:
     Description: The ID of the Cognito User Pool Client
     Value: !GetAtt MyCognitoUserPoolClient.ClientId
+  UserPoolArn:
+    Description: The ARN of the Cognito User Pool
+    Value: !GetAtt MyCognitoUserPool.Arn
+    Export:
+      Name: MyUserPoolArn

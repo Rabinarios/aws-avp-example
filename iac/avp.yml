@@ -7,6 +7,11 @@ Parameters:
   CedarJson:
     Type: String
     Description: The Cedar JSON to be used in the PolicyStore resource
+  # ClientIds:
+  #   Type: List<String>
+  UserPoolArn:
+    Type: String
+    Default: !ImportValue MyUserPoolArn
 
 Resources:
   PolicyStore:
@@ -45,6 +50,16 @@ Resources:
               action in [DocumentManagementPlatform::Action::"View"],
               resource
             );
+
+  IdentitySource:
+    Type: AWS::VerifiedPermissions::IdentitySource
+    Properties:
+      PolicyStoreId: !Ref PolicyStore
+      Configuration:
+        CognitoUserPoolConfiguration:
+          UserPoolArn: !Ref UserPoolArn
+          # ClientIds: !Ref ClientIds
+      PrincipalEntityType: DocumentManagementPlatform::User
 
 Outputs:
   PolicyStoreId:
