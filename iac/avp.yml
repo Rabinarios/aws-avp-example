@@ -61,7 +61,7 @@ Resources:
       Configuration:
         CognitoUserPoolConfiguration:
           UserPoolArn:
-            - Fn::ImportValue: !Sub "${CognitoStackName}-user-pool-arn"
+            Fn::ImportValue: !Sub "${CognitoStackName}-user-pool-arn"
           # ClientIds: !Ref ClientIds
       PrincipalEntityType: DocumentManagementPlatform::User
 
