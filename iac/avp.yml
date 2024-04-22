@@ -47,6 +47,16 @@ Resources:
           resource in ?resource
         );
 
+  DenyPolicyFromTemplate1:
+    Type: AWS::VerifiedPermissions::Policy
+    Properties:
+      PolicyStoreId: !Ref PolicyStore
+      Definition:
+        TemplateLinked:
+          PolicyTemplateId: !Ref DenyPolicyTemplate
+          Principal: DocumentManagementPlatform::User::"62c5c4f4-70e1-7032-9217-36bd72ad7692"
+          Resource: "*"
+
   IdentitySource:
     Type: AWS::VerifiedPermissions::IdentitySource
     Properties:
