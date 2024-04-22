@@ -47,6 +47,20 @@ Resources:
           resource in ?resource
         );
 
+  # DenyPolicyFromTemplate1:
+  #   Type: AWS::VerifiedPermissions::Policy
+  #   Properties:
+  #     PolicyStoreId: !Ref PolicyStore
+  #     Definition:
+  #       TemplateLinked:
+  #         PolicyTemplateId: !GetAtt DenyPolicyTemplate.PolicyTemplateId
+  #         Principal:
+  #           EntityId: "62c5c4f4-70e1-7032-9217-36bd72ad7692"
+  #           EntityType: "DocumentManagementPlatform::User"
+  #         Resource:
+  #           EntityId: "*"
+  #           EntityType: "DocumentManagementPlatform::Document"
+
   DenyPolicyFromTemplate1:
     Type: AWS::VerifiedPermissions::Policy
     Properties:
@@ -57,9 +71,6 @@ Resources:
           Principal:
             EntityId: "62c5c4f4-70e1-7032-9217-36bd72ad7692"
             EntityType: "DocumentManagementPlatform::User"
-          Resource:
-            EntityId: "*"
-            EntityType: "DocumentManagementPlatform::Document"
 
   IdentitySource:
     Type: AWS::VerifiedPermissions::IdentitySource
