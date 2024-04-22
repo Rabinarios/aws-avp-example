@@ -61,7 +61,7 @@ Resources:
   #           EntityId: "*"
   #           EntityType: "DocumentManagementPlatform::Document"
 
-  DenyPolicyFromTemplate1:
+  DenyPolicyFromTemplate2:
     Type: AWS::VerifiedPermissions::Policy
     Properties:
       PolicyStoreId: !Ref PolicyStore
