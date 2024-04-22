@@ -24,4 +24,4 @@ jobs:
 
       - name: Deploy to AWS CloudFormation
         run: |
-          aws cloudformation deploy --stack-name aws-avp-example --template-file iac/avp.yml --parameter-overrides CedarJson="$(cat iac/schema.json)" --capabilities CAPABILITY_IAM
+          aws cloudformation deploy --stack-name aws-avp-example --template-file iac/avp.yml --parameter-overrides CedarJson="$(cat iac/schema.json)" --parameter-overrides CognitoStackName="aws-avp-example-cognito" --capabilities CAPABILITY_IAM

@@ -40,4 +40,5 @@ Outputs:
     Description: The ARN of the Cognito User Pool
     Value: !GetAtt MyCognitoUserPool.Arn
     Export:
-      Name: MyUserPoolArn
+      Name:
+        "Fn::Sub": "${AWS::StackName}-user-pool-arn"

@@ -9,9 +9,12 @@ Parameters:
     Description: The Cedar JSON to be used in the PolicyStore resource
   # ClientIds:
   #   Type: List<String>
-  UserPoolArn:
+  # UserPoolArn:
+  #   Type: String
+  #   Default: !ImportValue MyUserPoolArn
+  CognitoStackName:
     Type: String
-    Default: !ImportValue MyUserPoolArn
+    Description: The name of the Cognito stack
 
 Resources:
   PolicyStore:
@@ -57,7 +60,8 @@ Resources:
       PolicyStoreId: !Ref PolicyStore
       Configuration:
         CognitoUserPoolConfiguration:
-          UserPoolArn: !Ref UserPoolArn
+          UserPoolArn: Fn::ImportValue: 
+          'Fn::Sub': '${CognitoStackName}-user-pool-arn'
           # ClientIds: !Ref ClientIds
       PrincipalEntityType: DocumentManagementPlatform::User
 
