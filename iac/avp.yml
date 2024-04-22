@@ -53,13 +53,13 @@ Resources:
       PolicyStoreId: !Ref PolicyStore
       Definition:
         TemplateLinked:
-          PolicyTemplateId: !Ref DenyPolicyTemplate
+          PolicyTemplateId: !GetAtt DenyPolicyTemplate.PolicyTemplateId
           Principal:
-            EntityId: 62c5c4f4-70e1-7032-9217-36bd72ad7692
-            EntityType: DocumentManagementPlatform::User
+            EntityId: "62c5c4f4-70e1-7032-9217-36bd72ad7692"
+            EntityType: "DocumentManagementPlatform::User"
           Resource:
             EntityId: "*"
-            EntityType: DocumentManagementPlatform::Document
+            EntityType: "DocumentManagementPlatform::Document"
 
   IdentitySource:
     Type: AWS::VerifiedPermissions::IdentitySource
