@@ -44,7 +44,7 @@ Resources:
         forbid (
           principal in ?principal,
           action in [DocumentManagementPlatform::Action::"View"],
-          resource in ?resource
+          resource
         );
 
   # DenyPolicyFromTemplate1:
